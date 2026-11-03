@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ateliê Santa Terezinha | Imagens Sacras</title>
+    <link rel="icon" href="img/logo.jpeg">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header><a class="brand" href="index.html"><img src="img/logo.jpeg" alt="Ateliê Santa Terezinha"
+                style="width:72px;height:72px;border-radius:50%;object-fit:cover;display:block"></a>
+        <nav aria-label="Navegação principal"><a href="index.html" aria-current="page">Início</a><a href="produtos.html">Produtos</a></nav><form class="search" action="produtos.html" role="search"><input id="search" name="q" type="search"
+                placeholder="Buscar imagens sacras..." aria-label="Buscar produtos"><button type="submit" aria-label="Buscar produtos">⌕</button></form>
+        <div class="account"><button id="loginBtn">Cadastre-se | Entre</button><button class="cart-button" id="cartBtn"
+                aria-label="Abrir carrinho">🛒 <sup id="cartCount">0</sup></button></div>
+    </header>
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-art"><img src="img/terezinha.png"
+                    alt="Arte sacra e devoção" onerror="this.style.display='none'">
+            </div>
+            <div class="hero-copy"><span>SEJA BEM-VINDO</span><span>AO</span><strong>ATELIÊ SANTA
+                    TEREZINHA</strong><span>SEU SITE DE IMAGENS SACRAS</span><a class="cta" href="produtos.html">Conheça
+                    nossas imagens →</a></div>
+        </section>
+        <section class="about">
+            <h1>Conheça Um Pouco Mais Sobre Nós</h1>
+            <p>O Ateliê Santa Terezinha é um espaço dedicado à produção de imagens sacras feitas com cuidado, dedicação
+                e fé. Cada peça passa por um processo artesanal, desde a preparação da imagem até os detalhes finais da
+                pintura, realizada à mão, tornando cada obra única e especial.</p>
+            <p>O trabalho é feito com atenção aos mínimos detalhes, buscando representar a beleza e a espiritualidade
+                dos santos. A pintura manual valoriza cada imagem, transmitindo mais autenticidade e significado para
+                quem a recebe.</p>
+            <p>Mais do que um local de produção, o Ateliê Santa Terezinha é um ambiente onde arte e devoção caminham
+                juntas.</p>
+        </section>
+    </main>
+    <footer>
+        <div><b>Entre em contato</b><a href="https://wa.me/5551996643587" target="_blank" rel="noopener">☏ +55 51
+                99664-3587</a></div>
+        <div><b>Redes sociais</b><a href="https://www.instagram.com/terezinhaateliesanta/" target="_blank"
+                rel="noopener">◎ @terezinhaateliesanta</a></div><small>© <span id="year"></span> Ateliê Santa
+            Terezinha</small>
+    </footer>
+    <dialog id="productDialog"><button class="close" data-close aria-label="Fechar">×</button>
+        <div id="productDetail"></div>
+    </dialog>
+<script src="script.js"></script>
+    <script src="conta.js"></script>
+</body>
+
+</html>

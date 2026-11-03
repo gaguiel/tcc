@@ -1,0 +1,747 @@
+/* ==========================================================
+   FONTES
+   Importa do Google Fonts:
+   - Barlow Condensed: títulos (hero e nome das seções)
+   - DM Sans: texto geral do site
+   - Great Vibes: letra cursiva (logo e título "sobre")
+   ========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&display=swap');
+
+/* ==========================================================
+   VARIÁVEIS DE COR
+   Definidas uma vez e reutilizadas com var(--nome).
+   Para mudar o tema do site, basta alterar aqui.
+   ========================================================== */
+:root {
+  --pink: #f9d5f5;   /* rosa principal (cabeçalho, botões, rodapé) */
+  --light: #fff5fd;  /* rosa bem claro (reserva, não usado no momento) */
+  --ink: #231c24;    /* cor do texto principal */
+  --muted: #706672;  /* cinza para textos secundários */
+}
+
+/* ==========================================================
+   RESET E BASE
+   ========================================================== */
+
+/* Faz width/height já incluírem padding e borda (facilita os cálculos de layout) */
+* {
+  box-sizing: border-box;
+}
+
+/* Rolagem suave ao clicar em links internos (#produtos, etc.) */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Estilo geral da página: sem margem, fonte e cor padrão, fundo branco */
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  background: white;
+}
+
+/* Botões e campos herdam a fonte do site (por padrão o navegador usa outra) */
+button,
+input {
+  font: inherit;
+}
+
+/* Mãozinha ao passar o mouse sobre botões */
+button {
+  cursor: pointer;
+}
+
+/* ==========================================================
+   CABEÇALHO
+   ========================================================== */
+
+/* Barra rosa no topo, que fica fixa ao rolar a página (sticky).
+   O padding lateral mantém o conteúdo alinhado a um máximo de 1200px. */
+header {
+  background: var(--pink);
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  padding: 14px max(4%, calc((100vw - 1200px) / 2));
+  min-height: 105px;
+  position: sticky;
+  top: 0;
+  z-index: 5; /* garante que fique acima do conteúdo ao rolar */
+  box-shadow: 0 2px 15px #42223a0a; /* sombra bem suave embaixo */
+}
+
+/* Link da logo, sem sublinhado */
+.brand {
+  text-decoration: none;
+}
+
+/* Selo redondo da logo (círculo branco com borda e contorno rosa) */
+.seal {
+  width: 77px;
+  height: 77px;
+  border-radius: 50%;
+  background: white;
+  border: 5px solid #fff;
+  outline: 1px solid #f4b5db;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #a85e80;
+  font-size: 22px;
+  text-align: center;
+}
+
+/* Texto pequeno em cursiva dentro do selo */
+.seal small {
+  font: 11px 'Great Vibes', cursive;
+  color: #aa5a7c;
+}
+
+/* Menu de navegação: links lado a lado */
+nav {
+  display: flex;
+  gap: 30px;
+}
+
+nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* Linha embaixo do link ao passar o mouse */
+nav a:hover {
+  border-bottom: 2px solid;
+}
+
+/* Campo de busca em formato de pílula.
+   "margin: auto" empurra a busca para o centro do cabeçalho. */
+.search {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #463343;
+  border-radius: 30px;
+  padding: 14px 20px;
+  width: min(480px, 40vw); /* até 270px, ou 25% da largura da tela se for menor */
+  background: #ffffff30;   /* branco semitransparente */
+}
+
+/* Input transparente, sem borda nem contorno, para parecer parte da pílula */
+.search input {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  width: 100%;
+  font-size: 16px;
+}
+
+/* Ícone da lupa */
+.search span {
+  font-size: 25px;
+  line-height: 20px;
+}
+
+/* Área da direita: botão de login e carrinho */
+.account {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  white-space: nowrap; /* impede quebra de linha nos textos */
+}
+
+/* Botões sem aparência padrão (sem fundo e sem borda) */
+.account button {
+  border: 0;
+  background: none;
+}
+
+/* Primeiro botão (Entrar/Login) com texto menor */
+.account button:first-child {
+  font-size: 13px;
+}
+
+/* Botão do carrinho: ícone grande; "relative" serve de referência para o contador */
+.cart-button {
+  font-size: 27px;
+  position: relative;
+}
+
+/* Bolinha branca com a quantidade de itens, no canto do ícone do carrinho */
+.cart-button sup {
+  font-size: 10px;
+  background: #fff;
+  border-radius: 100%;
+  padding: 2px 5px;
+  position: absolute;
+  right: -8px;
+  top: 0;
+}
+
+/* ==========================================================
+   HERO (banner principal)
+   ========================================================== */
+
+/* Duas colunas iguais: imagem de um lado, texto do outro */
+.hero {
+  min-height: 370px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto; /* centraliza na página */
+}
+
+/* Caixa da imagem do banner: preto e branco (grayscale) e cortando o que passar */
+.hero-art {
+  height: 330px;
+  position: relative;
+  overflow: hidden;
+  filter: grayscale(1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imagem preenche toda a caixa (object-fit: cover) com leve transparência */
+.hero-art img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: 100;
+}
+
+/* Flor decorativa grande e quase invisível, posicionada sobre a imagem */
+.flower {
+  position: absolute;
+  font-size: 190px;
+  opacity: 0.13;
+}
+
+/* Texto do banner: centralizado, em maiúsculas, com tamanho que se ajusta à tela
+   (clamp = mínimo 22px, ideal 3% da largura, máximo 36px) */
+.hero-copy {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font: 700 clamp(22px, 3vw, 36px) 'Barlow Condensed', sans-serif;
+  text-transform: uppercase;
+}
+
+.hero-copy strong {
+  font-weight: 700;
+}
+
+/* Botões rosa (call to action e botão principal dos modais) */
+.cta,
+.primary {
+  background: var(--pink);
+  border: 0;
+  border-radius: 25px;
+  padding: 12px 22px;
+  color: var(--ink);
+  text-decoration: none;
+  font: 600 14px 'DM Sans', sans-serif;
+  margin-top: 15px;
+}
+
+/* Rosa um pouco mais forte ao passar o mouse */
+.cta:hover,
+.primary:hover {
+  background: #f3b8eb;
+}
+
+/* ==========================================================
+   SEÇÃO "SOBRE"
+   ========================================================== */
+
+/* Bloco de texto centralizado, com largura máxima para facilitar a leitura */
+.about {
+  text-align: center;
+  max-width: 850px;
+  margin: 45px auto 85px;
+  padding: 0 25px;
+}
+
+/* Título em letra cursiva */
+.about h1 {
+  font: 40px 'Great Vibes', cursive;
+  margin-bottom: 20px;
+}
+
+/* Parágrafo com fonte serifada e bastante espaço entre linhas */
+.about p {
+  font: 16px/1.8 Georgia, serif;
+}
+
+/* ==========================================================
+   CATÁLOGO DE PRODUTOS
+   ========================================================== */
+
+/* Container do catálogo, centralizado e com largura máxima */
+.catalog {
+  max-width: 1150px;
+  margin: 0 auto 80px;
+  padding: 25px;
+}
+
+/* Cabeçalho da seção: título à esquerda e texto de apoio à direita */
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  margin-bottom: 35px;
+}
+
+.section-heading h1,
+.section-heading h2 {
+  font: 600 37px 'Barlow Condensed', sans-serif;
+  margin: 4px 0;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Textinho pequeno acima do título, com letras espaçadas */
+.eyebrow {
+  letter-spacing: 2px;
+  font-size: 11px;
+  color: #ad699e;
+}
+
+/* Grade de produtos: 3 colunas iguais no desktop */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 45px 65px; /* 45px entre linhas, 65px entre colunas */
+}
+
+/* Cada produto é um botão, mas sem aparência de botão */
+.product {
+  border: 0;
+  background: none;
+  text-align: center;
+  padding: 0;
+  color: inherit;
+}
+
+/* Moldura da foto: altura fixa, cantos arredondados, corta o que passar.
+   "relative" permite posicionar o selo "Ver detalhes" dentro dela. */
+.product .photo {
+  height: 600px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f3eef1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* A imagem preenche a moldura; a transição deixa o zoom suave */
+.product .photo img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+/* Zoom leve na foto ao passar o mouse sobre o produto */
+.product:hover img {
+  transform: scale(1.05);
+}
+
+/* Nome do produto */
+.product h3 {
+  font-size: 14px;
+  margin: 13px 0 4px;
+}
+
+/* Tamanho e preço */
+.product p {
+  font-size: 12px;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Selo "Ver detalhes ↗" no canto inferior direito da foto */
+.product .view {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: #ffffffdc;
+  padding: 8px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+/* Mensagem de "nenhum produto encontrado" na busca */
+.empty {
+  text-align: center;
+  padding: 30px;
+}
+
+/* ==========================================================
+   RODAPÉ
+   ========================================================== */
+
+/* Faixa rosa com colunas espalhadas; quebra de linha se faltar espaço */
+footer {
+  background: var(--pink);
+  padding: 22px 7%;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+/* Cada bloco do rodapé empilha seus itens na vertical */
+footer div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+footer a {
+  color: inherit;
+  font-weight: 600;
+}
+
+/* Texto de direitos autorais mais apagado */
+footer small {
+  opacity: 0.65;
+}
+
+/* ==========================================================
+   JANELAS (MODAIS): produto, carrinho e login
+   ========================================================== */
+
+/* Estilo comum das janelas <dialog> */
+dialog {
+  border: 0;
+  border-radius: 20px;
+  box-shadow: 0 20px 80px #0004;
+  padding: 30px;
+  max-width: min(850px, 92vw); /* nunca passa de 850px nem de 92% da tela */
+  width: 100%;
+}
+
+/* Fundo escurecido atrás da janela aberta */
+dialog::backdrop {
+  background: #261927a3;
+}
+
+/* Botão "×" para fechar, no canto superior direito */
+.close {
+  position: absolute;
+  right: 18px;
+  top: 12px;
+  background: none;
+  border: 0;
+  font-size: 30px;
+}
+
+/* Detalhe do produto: foto à esquerda, informações à direita */
+.detail {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.detail img {
+  width: 100%;
+  max-height: 535px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #f7f0f4;
+}
+
+.detail h2 {
+  font-size: 27px;
+}
+
+.detail p {
+  line-height: 1.65;
+  font-size: 14px;
+}
+
+/* Campo de quantidade em uma linha própria */
+.detail label {
+  display: block;
+  margin: 15px 0;
+}
+
+.detail input {
+  width: 85px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Botão "Adicionar ao carrinho" ocupa toda a largura */
+.detail .primary {
+  width: 100%;
+}
+
+/* ==========================================================
+   CARRINHO
+   ========================================================== */
+
+/* Cada linha do carrinho: nome à esquerda, preço e botão remover à direita */
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+/* Botão "×" de remover item, com fundo rosa */
+.cart-row button {
+  border: 0;
+  background: #f8d7f2;
+  border-radius: 6px;
+}
+
+/* Permite que um link se comporte como bloco (ex.: botão em formato de link) */
+.link-button {
+  display: inline-block;
+}
+
+/* ==========================================================
+   RESPONSIVO: TELAS ATÉ 750px (celulares e tablets pequenos)
+   ========================================================== */
+@media (max-width: 750px) {
+  /* Cabeçalho mais compacto; itens podem quebrar para a linha de baixo */
+  header {
+    gap: 14px;
+    flex-wrap: wrap;
+    padding: 10px 16px;
+    min-height: auto;
+  }
+
+  /* Selo menor */
+  .seal {
+    height: 55px;
+    width: 55px;
+  }
+
+  nav {
+    gap: 15px;
+  }
+
+  /* Busca vai para uma linha própria, ocupando toda a largura */
+  .search {
+    order: 3;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  /* Conta/carrinho ficam encostados à direita */
+  .account {
+    margin-left: auto;
+    gap: 5px;
+  }
+
+  .account button:first-child {
+    font-size: 11px;
+  }
+
+  /* Banner em uma única coluna (imagem em cima, texto embaixo) */
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-art {
+    height: 220px;
+  }
+
+  .hero-copy {
+    padding: 25px 15px 45px;
+    font-size: 27px;
+  }
+
+  .about {
+    margin: 25px auto 45px;
+  }
+
+  .about h1 {
+    font-size: 35px;
+  }
+
+  /* Título e texto de apoio empilhados em vez de lado a lado */
+  .section-heading {
+    display: block;
+  }
+
+  /* Produtos em 2 colunas, com espaçamentos menores */
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px 15px;
+  }
+
+  /* Fotos bem mais baixas que no desktop */
+  .product .photo {
+    height: 210px;
+  }
+
+  /* Detalhe do produto em uma coluna */
+  .detail {
+    grid-template-columns: 1fr;
+  }
+
+  .detail img {
+    max-height: 280px;
+  }
+
+  footer {
+    justify-content: space-between;
+  }
+}
+
+/* ==========================================================
+   RESPONSIVO: TELAS ATÉ 390px (celulares pequenos)
+   ========================================================== */
+@media (max-width: 390px) {
+  /* Produtos em coluna única, com fotos um pouco mais altas */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product .photo {
+    height: 290px;
+  }
+}
+/* Navegação entre a apresentação e o catálogo. */
+nav a[aria-current="page"] { border-bottom: 2px solid; }
+.search button { border: 0; background: transparent; color: inherit; padding: 0 2px; font-size: 25px; line-height: 20px; }
+.search:focus-within { outline: 2px solid #ad699e; outline-offset: 3px; }
+
+/* Páginas de acesso e perfil */
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1; }
+.auth-page, .account-page { max-width: 1150px; margin: 0 auto; padding: 32px 25px 55px; }
+.auth-page h1 { font-size: 26px; }
+.auth-tabs { justify-content: flex-end; margin-bottom: 35px; gap: 8px; }
+.profile-form { max-width: 475px; margin: 30px auto 0; display: flex; flex-direction: column; gap: 25px; }
+.profile-form label { display: flex; flex-direction: column; gap: 12px; text-align: center; font-weight: 700; }
+.profile-form input { width: 100%; border: 1.5px solid var(--ink); background: white; padding: 9px 12px; border-radius: 0; font-weight: 400; text-align: center; }
+.profile-form input:focus { outline: 2px solid #ad699e; outline-offset: 3px; }
+.profile-form .primary { width: 100%; margin-top: 5px; }
+.profile-form > a { text-align: center; color: inherit; font-size: 14px; }
+.local-note { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.form-message { margin: 0; color: #8a244c; font-size: 14px; }
+.form-message:empty { display: none; }
+.login-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 65px; align-items: center; }
+.login-layout h1 { font-size: clamp(25px, 3vw, 36px); text-align: center; line-height: 1.4; }
+.login-layout .profile-form { width: 100%; margin: 0 auto; }
+.account-layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 30px; }
+.account-layout[hidden] { display: none; }
+.profile-summary { padding-right: 30px; border-right: 1px solid var(--ink); }
+.account-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.account-heading h1, .purchase-history h2 { font-size: 22px; }
+.account-heading a { color: inherit; font-weight: 700; }
+.profile-name { display: flex; align-items: center; gap: 20px; margin-top: 30px; }
+.profile-name h2 { font-size: 23px; font-weight: 500; overflow-wrap: anywhere; }
+.avatar { width: 65px; height: 65px; border-radius: 50%; background: var(--ink); color: white; display: grid; place-items: center; font-size: 38px; flex-shrink: 0; }
+.profile-summary p { overflow-wrap: anywhere; }
+.text-button { border: 0; background: none; font-weight: 700; padding: 15px 0; float: right; }
+.order-card { border-bottom: 1px solid #eadde6; padding: 18px 0; }
+.order-card p { font-size: 13px; color: var(--muted); }
+.order-product { display: flex; align-items: center; gap: 20px; margin: 12px 0; }
+.order-product img { width: 65px; height: 85px; object-fit: cover; border-radius: 10px; }
+.order-product span { display: block; font-size: 13px; margin-top: 5px; }
+.welcome-back { text-align: center; margin-top: 30px; }
+@media(max-width:750px) { .login-layout,.account-layout { grid-template-columns: 1fr; gap: 30px; } .profile-summary { border-right: 0; border-bottom: 1px solid var(--ink); padding: 0 0 25px; } .auth-page,.account-page { padding: 25px 20px 40px; } .auth-tabs { margin-bottom: 25px; } }
+
+header .auth-tabs { margin: 0; gap: 8px; white-space: nowrap; }
+
+.order-product > a { display: block; flex-shrink: 0; border-radius: 10px; }
+.order-product > a img { display: block; }
+.order-product > a:focus-visible { outline: 3px solid #ad699e; outline-offset: 4px; }
+
+/* Catálogo compacto: cinco produtos por linha em telas grandes. */
+.grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 30px 20px;
+}
+.product .photo { height: 280px; }
+@media (max-width: 1000px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .product .photo { height: 260px; }
+}
+@media (max-width: 750px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px 15px; }
+  .product .photo { height: 210px; }
+}
+@media (max-width: 390px) {
+  .grid { grid-template-columns: 1fr; }
+  .product .photo { height: 290px; }
+}
+
+.search { background: #fff; }
+
+/* Perfil compacto e histórico com rolagem independente. */
+.account-layout { align-items: start; }
+.profile-summary { display: flex; flex-direction: column; }
+.profile-summary .text-button {
+  align-self: flex-end;
+  float: none;
+  margin-top: 8px;
+  padding: 10px 0;
+}
+.purchase-history {
+  min-width: 0;
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+}
+.purchase-history h2,
+.purchase-history > .local-note,
+.purchase-history .welcome-back { flex-shrink: 0; }
+.purchase-history > .local-note:empty { display: none; }
+.purchase-history #orderList {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 12px;
+  scrollbar-gutter: stable;
+  overflow-wrap: anywhere;
+}
+#orderList:focus-visible { outline: 2px solid #ad699e; outline-offset: 4px; }
+.purchase-history .welcome-back { margin: 12px 0 0; }
+@media (max-width: 750px) {
+  .purchase-history { height: 320px; }
+}
+
+/* Busca sem o botão nativo de limpar. */
+.search input::-webkit-search-cancel-button,
+.search input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }
+.search input::-ms-clear { display: none; }
+.cart-page { max-width: 1100px; margin: 0 auto; padding: 35px 25px 55px; }
+.cart-page h1 { font-size: 28px; }
+.cart-page .cart-row { align-items: center; gap: 20px; }
+.cart-product-photo { flex-shrink: 0; }
+.cart-product-photo img { display: block; width: 90px; height: 120px; object-fit: cover; border-radius: 10px; }
+.cart-product-copy { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.cart-product-copy a { color: inherit; font-weight: 700; }
+.cart-product-copy p, .cart-product-copy span { font-size: 13px; }
+.cart-page .cart-row > span { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.cart-page .cart-row button { padding: 7px 10px; font-size: 12px; }
+.cart-summary { margin-top: 30px; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.cart-summary p { color: var(--muted); font-size: 13px; margin: 0; }
+.cart-summary > a { color: inherit; margin-top: 10px; }
+@media(max-width: 500px) { .cart-page .cart-row { flex-wrap: wrap; gap: 12px; } .cart-product-photo img { width: 70px; height: 95px; } .cart-page .cart-row > span { width: 100%; flex-direction: row; justify-content: space-between; align-items: center; } }

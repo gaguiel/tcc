@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Editar dados | Ateliê Santa Terezinha</title>
+    <link rel="icon" href="img/logo.jpeg">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header><a class="brand" href="index.html"><img src="img/logo.jpeg" alt="Ateliê Santa Terezinha"
+                style="width:72px;height:72px;border-radius:50%;object-fit:cover;display:block"></a>
+        <nav aria-label="Navegação principal"><a href="index.html">Início</a><a href="produtos.html">Produtos</a></nav><form class="search" action="produtos.html" role="search"><input id="search" name="q" type="search"
+                placeholder="Buscar imagens sacras..." aria-label="Buscar produtos"><button type="submit" aria-label="Buscar produtos">⌕</button></form>
+        <div class="account"><button id="loginBtn">Cadastre-se | Entre</button><button class="cart-button" id="cartBtn"
+                aria-label="Abrir carrinho">🛒 <sup id="cartCount">0</sup></button></div>
+    </header>
+    <main><section class="auth-page edit-page"><h1>Editar dados</h1><form id="editForm" class="profile-form"><label>Nome completo<input name="name" type="text" required autocomplete="name" maxlength="100" placeholder="Ex.: Fulano da Silva"></label><label>E-mail<input name="email" type="email" required autocomplete="email" maxlength="254" placeholder="Ex.: fulano@email.com"></label><label>Telefone (opcional)<input name="phone" type="tel" autocomplete="tel" maxlength="25" placeholder="Ex.: (51) 99999-9999"></label><p class="form-message" role="status"></p><button class="primary">Salvar</button><a href="minha-conta.html">Voltar para minha conta</a></form></section></main>
+    <footer>
+        <div><b>Entre em contato</b><a href="https://wa.me/5551996643587" target="_blank" rel="noopener">☏ +55 51
+                99664-3587</a></div>
+        <div><b>Redes sociais</b><a href="https://www.instagram.com/terezinhaateliesanta/" target="_blank"
+                rel="noopener">◎ @terezinhaateliesanta</a></div><small>© <span id="year"></span> Ateliê Santa
+            Terezinha</small>
+    </footer>
+    <dialog id="productDialog"><button class="close" data-close aria-label="Fechar">×</button>
+        <div id="productDetail"></div>
+    </dialog>
+<script src="script.js"></script>
+    <script src="conta.js"></script>
+</body>
+
+</html>
