@@ -172,7 +172,7 @@ function updateCart() {
           (p) => `
             <div class="cart-row">
               <a class="cart-product-photo" href="produtos.html?produto=${p.id}"><img src="${p.image}" alt="${p.name}"></a>
-<div class="cart-product-copy"><a href="produtos.html?produto=${p.id}">${p.name}</a><p>${p.material} · ${p.size}</p><span>Quantidade: ${p.qty}</span></div>
+<div class="cart-product-copy"><a href="produtos.html?produto=${p.id}">${p.name}</a><p>${p.material} · ${p.size}</p><label class="cart-quantity" for="cart-qty-${p.id}">Quantidade: <input id="cart-qty-${p.id}" data-quantity="${p.id}" type="number" min="1" step="1" value="${p.qty}" inputmode="numeric" aria-label="Quantidade de ${p.name}"></label></div>
               <span>
                 ${money(p.price * p.qty)}
                 <button data-remove="${p.id}" aria-label="Remover ${p.name} do carrinho">Remover</button>
@@ -214,6 +214,20 @@ if (cartItems) cartItems.onclick = (e) => {
   updateCart();
 };
 
+if (cartItems) cartItems.addEventListener('change', (e) => {
+  const input = e.target.closest('input[data-quantity]');
+  if (!input) return;
+  const item = cart.find((p) => p.id === Number(input.dataset.quantity));
+  if (!item) return;
+  const qty = Number(input.value);
+  if (!Number.isSafeInteger(qty) || qty < 1) {
+    input.value = item.qty;
+    return;
+  }
+  item.qty = qty;
+  updateCart();
+  document.querySelector(`#cart-qty-${item.id}`)?.focus();
+});
 document.querySelector('#cartBtn').onclick = () => {
   updateCart();
   location.href = 'carrinho.html';
