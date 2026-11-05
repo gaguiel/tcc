@@ -276,7 +276,6 @@ if (checkoutButton) checkoutButton.onclick = () => {
 
 render(search.value);
 updateCart();
-document.querySelector('#year').textContent = new Date().getFullYear();
 if (new URLSearchParams(location.search).get('carrinho') === '1' && cart.length) {
   location.href = 'carrinho.html';
 }

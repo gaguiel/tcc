@@ -394,10 +394,11 @@ nav a:hover {
 
 /* Faixa rosa com colunas espalhadas; quebra de linha se faltar espaço */
 footer {
+  text-align: center;
   background: var(--pink);
   padding: 22px 7%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   gap: 20px;
   align-items: center;
   flex-wrap: wrap;
@@ -607,6 +608,7 @@ dialog::backdrop {
   }
 
   footer {
+  text-align: center;
     justify-content: space-between;
   }
 }
