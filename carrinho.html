@@ -12,12 +12,35 @@
 <body>
     <header><a class="brand" href="index.html"><img src="img/logo.jpeg" alt="Ateliê Santa Terezinha"
                 class="brand-logo"></a>
-        <nav aria-label="Navegação principal"><a href="index.html">Início</a><a href="produtos.html">Produtos</a></nav><form class="search" action="produtos.html" role="search"><input id="search" name="q" type="search"
-                placeholder="Buscar imagens sacras..." aria-label="Buscar produtos"><button type="submit" aria-label="Buscar produtos"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button></form>
+        <nav aria-label="Navegação principal"><a href="index.html">Início</a><a href="produtos.html">Produtos</a></nav>
+        <form class="search" action="produtos.html" role="search"><input id="search" name="q" type="search"
+                placeholder="Buscar imagens sacras..." aria-label="Buscar produtos"><button type="submit"
+                aria-label="Buscar produtos"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"
+                    focusable="false">
+                    <circle cx="10.5" cy="10.5" r="6.5" />
+                    <path d="m16 16 4.5 4.5" />
+                </svg></button></form>
         <div class="account"><button id="loginBtn">Cadastre-se | Entre</button><button class="cart-button" id="cartBtn"
-                aria-label="Abrir carrinho"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 3h3l2.5 12h11l2-8H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg> <sup id="cartCount">0</sup></button></div>
+                aria-label="Abrir carrinho"><svg viewBox="0 0 24 24" width="26" height="26" fill="none"
+                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                    aria-hidden="true" focusable="false">
+                    <path d="M2 3h3l2.5 12h11l2-8H6" />
+                    <circle cx="9" cy="20" r="1" />
+                    <circle cx="18" cy="20" r="1" />
+                </svg> <sup id="cartCount">0</sup></button></div>
     </header>
-    <main><section class="cart-page"><div class="cart-page-heading"><h1>Seu carrinho</h1><a class="primary link-button" href="produtos.html">Continuar comprando</a></div><div id="cartItems" aria-live="polite"></div><div class="cart-summary"><strong id="cartTotal"></strong><p></p><button class="primary" id="checkout">Finalizar pelo WhatsApp</button></div></section></main>
+    <main>
+        <section class="cart-page">
+            <div class="cart-page-heading">
+                <h1>Seu carrinho</h1><a class="primary link-button" href="produtos.html">Continuar comprando</a>
+            </div>
+            <div id="cartItems" aria-live="polite"></div>
+            <div class="cart-summary"><strong id="cartTotal"></strong>
+                <p></p><button class="primary" id="checkout">Finalizar pelo WhatsApp</button>
+            </div>
+        </section>
+    </main>
     <footer>
         <div><b>Entre em contato</b><a href="https://wa.me/5551996643587" target="_blank" rel="noopener">☏ +55 51
                 99664-3587</a></div>
@@ -28,7 +51,7 @@
     <dialog id="productDialog"><button class="close" data-close aria-label="Fechar">×</button>
         <div id="productDetail"></div>
     </dialog>
-<script src="script.js"></script>
+    <script src="script.js"></script>
     <script src="conta.js"></script>
 </body>
 
